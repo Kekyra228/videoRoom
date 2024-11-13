@@ -1,50 +1,45 @@
-# React + TypeScript + Vite
+# Видео-Чат Приложение 📷♡
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Это веб-приложение для видеочата, созданное с использованием PeerJS для установления однорангового (P2P) соединения между двумя участниками.
 
-Currently, two official plugins are available:
+# Стэк 🛠️:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Next.js** — для серверного рендеринга, оптимизации и маршрутизации страниц.
+- **TypeScript** — для типизации кода и улучшения читаемости и поддержки проекта.
+- **React** — для создания интерфейса.
+- **PeerJS** — для P2P соединений и работы с видео.
 
-## Expanding the ESLint configuration
+## 🛠 Как запустить проект?
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+1. Клонируйте репозиторий:
 
-- Configure the top-level `parserOptions` property like this:
+   ```bash
+   git clone https://github.com/Kekyra228/videoRoom
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+   ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+2.Установите зависимости:
+npm install
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+3.Запустите сервер разработки:
+npm run dev
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+# Инструкция по использованию:
+
+- Шаг 1: Откройте главную страницу
+  Перейдите на главную страницу приложения. Здесь вам нужно ввести своё имя и выбрать, в какую комнату вы хотите войти. Вы можете:
+  Создать новую комнату, сгенерировав уникальный roomId.
+  Или войти в уже существующую комнату, введя её roomId.
+
+- Шаг 2: Вход в комнату
+  После ввода имени и roomId нажмите кнопку «Войти в комнату». Вы будете перенаправлены на страницу видеочата, где будет создан уникальный peerId для установления связи с другим участником.
+
+- Шаг 3: Подключение к другому участнику
+  Один из участников должен скопировать свой peerId и передать его второму участнику (например, через сообщение).
+  Второй участник должен вставить peerId первого участника в поле для подключения и нажать кнопку «Подключиться к участнику».
+
+- Шаг 4: Начало видеочата
+  После подключения вы увидите своё видео и видео второго участника, а также имя собеседника.
+
+Завершение видеочата
+Для завершения сеанса видеочата просто закройте вкладку или нажмите кнопку «Выйти из комнаты».

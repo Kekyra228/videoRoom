@@ -47,7 +47,6 @@ const Room = () => {
           localVideoRef.current.play();
         }
 
-        // Обработка входящих вызовов
         newPeer.on("call", (call: MediaConnection) => {
           call.answer(stream);
           call.on("stream", (remoteStream: MediaStream) => {
@@ -67,8 +66,12 @@ const Room = () => {
           });
         });
       })
-      .catch((err: any) => {
-        console.error("Не удалось получить локальный поток", err);
+      .catch((err: unknown) => {
+        if (err instanceof Error) {
+          console.error("Не удалось получить локальный поток", err.message);
+        } else {
+          console.error("Не удалось получить локальный поток", err);
+        }
       });
 
     return () => {
@@ -86,12 +89,12 @@ const Room = () => {
 
       const conn = peer.connect(connectionId);
       conn.on("open", () => {
-        conn.send(username); // Отправляем свое имя второму участнику
+        conn.send(username);
       });
 
       conn.on("data", (data) => {
         if (typeof data === "string") {
-          setRemoteUsername(data); // Устанавливаем имя второго участника
+          setRemoteUsername(data);
         }
       });
 
