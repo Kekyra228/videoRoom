@@ -1,6 +1,7 @@
 import Peer, { DataConnection, MediaConnection } from "peerjs";
 import {
   Button,
+  Input,
   Label,
   Video,
   VideoContainer,
@@ -113,15 +114,15 @@ const Room = () => {
         <h3> Номер комнаты:{roomId}</h3>
         <h3>Ваш peerId: {peerId}</h3>
       </div>
-      <div>
-        <input
+      <VideoWrapper>
+        <Input
           type="text"
           placeholder="Введите peerId собеседника"
           value={connectionId}
           onChange={(e) => setConnectionId(e.target.value)}
         />
-        <button onClick={handleConnect}>Подключиться к участнику</button>
-      </div>
+        <Button onClick={handleConnect}>Подключиться к участнику</Button>
+      </VideoWrapper>
       <VideoContainer>
         <VideoWrapper>
           <Label>{username}</Label>

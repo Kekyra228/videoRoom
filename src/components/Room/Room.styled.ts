@@ -14,7 +14,22 @@ export const VideoWrapper = styled.div`
   align-items: center;
   margin: 0 20px;
 `;
+export const Input = styled.input`
+  padding: 12px 16px;
+  font-size: 16px;
+  border-radius: 25px;
+  border: none;
+  margin-bottom: 1rem;
+  width: 100%;
+  max-width: 300px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  text-align: center;
 
+  &:focus {
+    outline: none;
+    background-color: #ffffff;
+  }
+`;
 export const Video = styled.video`
   width: 320px;
   height: 240px;
